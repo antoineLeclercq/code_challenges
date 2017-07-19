@@ -30,17 +30,14 @@ end
 
 # Recursive Approach
 def remove_elements(head, val)
-  return nil unless head
+    return nil if head.nil?
 
-  if head.next.nil?
-    return nil if head.val == val
-    return head
-  end
+    sub_ll_solved = remove_elements(head.next, val)
 
-  if head.val == val
-    remove_elements(head.next, val)
-  else
-    head.next = remove_elements(head.next, val)
-    head
-  end
+    if head.val == val
+        sub_ll_solved
+    else
+        head.next = sub_ll_solved
+        head
+    end
 end
