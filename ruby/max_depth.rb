@@ -1,12 +1,15 @@
-def max_depth(node)
-  return 0 if node.nil?
-  
-  new_left_depth = max_depth(node.left) + 1
-  new_right_depth = max_depth(node.right) + 1
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val)
+#         @val = val
+#         @left, @right = nil, nil
+#     end
+# end
 
- if new_left_depth > new_right_depth
-    new_left_depth
-  else
-    new_right_depth
-  end
+# @param {TreeNode} root
+# @return {Integer}
+def max_depth(root)
+  return 0 if root.nil?
+  [max_depth(root.left), max_depth(root.right)].max + 1
 end
